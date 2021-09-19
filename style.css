@@ -28,82 +28,88 @@ ul.header_menu li:nth-child(1) a{
 ul.header_menu li:nth-child(1) a::after {
 	content: "";
 	height: 3px;
-	width: 40%;
+	width: 75%;
 	position: absolute;
 	top: 130%;
-	left: 14px;
+	left: 12px;
 	background-color: #3763eb;
 	border-radius: 10px;
 }
-ul.header_menu li:nth-child(5) a::after {
+ul.header_menu li a::after {
 	content: "";
 	height: 3px;
-	width: 40%;
+	width: 0;
 	position: absolute;
 	top: 130%;
-	left: 14px;
+	left: 12px;
 	background-color: #3763eb;
 	border-radius: 10px;
+	transition: all ease .4s;
 }
-.header_button{
-    width: 200px;
-    text-align: right;
-	position: relative;
-}
-.header_button a {
-	background-color: white;
-	color: #3763eb;
-	display: inline-block;
-	width: 140px;
-	height: 50px;
-	border-radius: 30px;
-	border: 1px solid transparent;
-	line-height: 37px;
-	font-size: 17px;
-	font-weight: 500;
-    transition: all ease .5s;
+ul.header_menu li a:hover::after{
+	width: 75%;
 }
 
-.header_eror {
-	height: 66px;
-	width: 205px;
-	position: absolute;
-	top: 130%;
-	right: 210px;
-	background-color: #fff;
-	border-radius: 0 0 3px 3px;
-    opacity: 0;
-    visibility: hidden;
-    transition: all ease .4s;
-	z-index: 99;
-}
-.header_eror span {
-	display: inline-block;
-	height: 40px;
-	width: 183px;
-	background-color: #3763eb;
-	color: #fff;
-	border-radius: 5px;
-	line-height: 43px;
-	padding: 0 15px;
-	font-size: 18px;
-	font-weight: 500;
+ul.header_menu li{
 	position: relative;
-	top: 13px;
-	left: -11px;
+}
+ul.header_menu li span {
+	display: inline-block;
+	width: 206px;
+	background-color: #3763eb;
+	color: white;
+	border: 20px solid #fff;
+	position: absolute;
+	top: 142%;
+	left: 14px;
+	z-index: 99;
+	padding: 10px;
+	font-weight: 500;
+	border-radius: 0 0 3px 3px;
 	opacity: 0;
 	visibility: hidden;
 	transition: all ease .4s;
-	text-align: left;
-} 
-
-.header_button a:hover .header_eror{
-    opacity: 1;
-    visibility: visible;
 }
-.header_button a:hover .header_eror span{
-    opacity: 1;
-    visibility: visible;
+ul.header_menu li:hover span{
+	opacity: 1;
+	visibility: visible;
+	z-index: 99;
+}
+
+.header_button{
+    width: 200px;
+    text-align: right;
+}
+a.hover_btn {
+	text-decoration: none;
+	background-color: white;
+	color: #3763eb;
+	display: inline-block;
+	padding: 10px 20px;
+	border-radius: 30px;
+	font-size: 17px;
+	font-weight: 500;
+	overflow: hidden;
+    transition: all ease .5s;
+	position: relative;
+}
+a.hover_btn::after{
+	content: "";
+	height: 100%;
+	width: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #3763eb;
+	color: #fff !important;
+	opacity: 0;
+	visibility: hidden;
+	transition: all ease .5s;
+}
+a.hover_btn:hover::after{
+	width: 100%;
+	opacity: 1;
+	visibility: visible;
 }
 
 /*===>>> header section end <<<===*/
@@ -143,10 +149,17 @@ ul.header_menu li:nth-child(5) a::after {
 .banner_text .header_button{
     text-align: left;
 }
-.banner_text .header_button a {
-	width: 167px;
+.banner_text .header_button a.banner_btn {
+	padding: 15px 20px;
+	border-radius: 30px;
 	background-color: #3763eb;
 	color: white;
+	text-decoration: none;
+	transition: all ease .4s;
+}
+.banner_text .header_button a.banner_btn:hover{
+	background-color: #fff;
+	color: #3763eb !important;
 }
 /*===>>> banner section end <<<===*/
 
@@ -200,6 +213,9 @@ ul.header_menu li:nth-child(5) a::after {
 }
 .content_item:hover p{
     color: #f6f9fc;
+}
+.content_item:hover span::after{
+	background-color: #fff;
 }
 .content_item h5 {
 	font-size: 17px;
@@ -348,7 +364,20 @@ ul.header_menu li:nth-child(5) a::after {
 	margin-top: 100px;
     position: relative;
 }
-.work_text span::after{
+.work_text span::after {
+	content: "";
+	position: absolute;
+	top: -3px;
+	left: -3px;
+	height: 72px;
+	width: 72px;
+	border-radius: 50%;
+	border: 1px solid white;
+	animation: play 1.5s ease-out infinite;
+	right: 0;
+	bottom: 0;
+}
+.work_text span::before{
     content: "";
     position: absolute;
     top: 0;
@@ -357,20 +386,9 @@ ul.header_menu li:nth-child(5) a::after {
     width: 65px;
     border-radius: 50%;
     border: 1px solid white;
-    animation: play 1.5s ease-out infinite;
-}
-/* .work_text span::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 75px;
-    width: 75px;
-    border-radius: 50%;
-    border: 1px solid white;
 	margin: auto;
     animation: play 1.5s ease-out infinite;
-} */
+}
 @keyframes play{
     0%{
         transform: scale(1);
